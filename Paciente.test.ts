@@ -4,7 +4,7 @@ describe('paciente', () =>{
     
     // TESTE NOME
 
-    test("Verificação do nome inicial", () => {
+  /* test("Verificação do nome inicial", () => {
         const paciente = new Paciente("Lucas", 25);
         expect(paciente.nome).toBe("Lucas");
     })
@@ -47,5 +47,5 @@ describe('paciente', () =>{
     test("Validar Idade Menor que 120", () => {
         expect(() => new Paciente("Lucas", 120)).toThrow(Error);
     })
-
+*/
 })

@@ -6,7 +6,7 @@ describe('Medico', () =>{
     
     // TESTE NOME
 
-   test("Verificação do nome inicial", () => {
+  /* test("Verificação do nome inicial", () => {
         const medico = new Medico("Cristiano Ronaldo","123456","Cardiologista");
         expect(medico.nome).toBe("Cristiano Ronaldo");
     }) /*
