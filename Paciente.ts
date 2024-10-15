@@ -4,7 +4,7 @@ export class Paciente{
 
     constructor(nome:string, idade: number){
         this._nome = nome;
-        this._idade = idade;
+        this._idade = this.validarIdade(idade);
     }
     get nome(){
         return this._nome;
@@ -17,7 +17,12 @@ export class Paciente{
         return this._idade;
     }
 
-    set idade(idade:number){
-        this._idade = idade;
+    public validarIdade(idade: number){
+        if(!isNaN(idade) && idade < 120 && idade > 0){
+            return idade;
+        }
+        else{
+            throw new Error("Idade Invalida");
+        }
     }
 }
