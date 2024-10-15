@@ -3,7 +3,7 @@ import { Consulta } from "./Consulta";
 export class Receita {
     private _medicamentos: string;
     private consulta: Consulta;
-    private _dataReceita;
+    private _dataReceita: Date;
 
 	constructor(medicamentos: string, $consulta: Consulta) {
 		this._medicamentos = medicamentos;
