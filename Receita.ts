@@ -2,35 +2,44 @@ import { Consulta } from "./Consulta";
 
 export class Receita {
     private _medicamentos: string;
-    private consulta: Consulta;
-    private _dataReceita;
+    private _consulta: Consulta;
+    private _dataReceita: Date;
 
-	constructor(medicamentos: string, $consulta: Consulta) {
+	constructor(medicamentos: string, consulta: Consulta, dataReceita: Date) {
 		this._medicamentos = medicamentos;
-		this.consulta = $consulta;
+		this._consulta = consulta;
+		this._dataReceita = dataReceita;
 	}
 
 	public get medicamentos(): string {
 		return this._medicamentos;
 	}
 
-	public get $consulta(): Consulta {
-		return this.consulta;
+	public get consulta(): Consulta {
+		return this._consulta;
 	}
 
-	public set medicamentos(value: string) {
-		this._medicamentos = value;
+	public get dataReceita(): Date{
+		return this._dataReceita;
 	}
 
-	public set $consulta(value: Consulta) {
-		this.consulta = value;
+	public set medicamentos(medicamentos: string) {
+		this._medicamentos = medicamentos;
 	}
 
-    private verificarData(){ //verifica se é a mesma que a da consulta
-        if(this._dataReceita == this.consulta.dataC){
-            console.log('Consulta Marcada');   
+	public set consulta(consulta: Consulta) {
+		this._consulta = consulta;
+	}
+
+	public set dataReceita(dataReceita: Date){
+		this._dataReceita = dataReceita;
+	}
+
+    public verificarData(){ //verifica se é a mesma que a da consulta
+        if(this._dataReceita.toDateString() == this._consulta.dataC.toDateString()){
+            console.log('Receita Valida');   
         } else{
             throw new Error('Erro! Data da Receita difere da Data da Consulta.');
-        }
+		}
     }
 }

@@ -3,18 +3,39 @@ import { Consulta } from "./Consulta";
 import { Medico } from "./Medico";
 import { Paciente } from "./Paciente";
 
-describe('paciente', () =>{
+describe('receita', () =>{
 
     let paciente:Paciente
     let consulta: Consulta
+    let medico: Medico
+
     beforeEach(() => {
+
     paciente = new Paciente("Luana",24);
-    consulta = new Consulta(new Medico("Joao","123456","Cardiologista"),new Date('2024-11-05'), paciente)
+    medico = new Medico("Joao","123456","Cardiologista")
+    consulta = new Consulta(medico, new Date('2024-11-05'), paciente)
+
 })
 
     test("Verificando mediciamento", () => {
-        const receita1 = new Receita("Dipirona", consulta);
+        const receita1 = new Receita("Dipirona", consulta, new Date('2024-11-05'));
         expect(receita1.medicamentos).toBe("Dipirona");
     })
 
+    test("Verificando mediciamento Atualizado", () => {
+        const receita1 = new Receita("Dipirona", consulta, new Date('2024-11-05'));
+        receita1.medicamentos = "LCD"
+        expect(receita1.medicamentos).toBe("LCD");
+    })
+
+    test("Verificando mudança de data", () => {
+        const receita1 = new Receita("Dipirona", consulta, new Date("2024-11-05"));
+        receita1.dataReceita = new Date("2024-11-06");
+        expect(receita1.dataReceita.toISOString().slice(0, 10)).toBe('2024-11-06');
+    })
+
+    test("Verificando Data Valida", () => {
+        expect(() => new Receita("Dipirona", consulta, new Date('2024-11-06')).verificarData()).toThrow(Error);
+    })
+    
 })

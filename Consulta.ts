@@ -10,6 +10,7 @@ export class Consulta{
 	constructor(medico: Medico, dataC: Date, paciente: Paciente) {
 		this._medico = medico;
 		this._paciente = paciente;
+        this._dataC = dataC;
         this.validarData();
 	}
     
